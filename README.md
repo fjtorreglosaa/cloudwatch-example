@@ -1,4 +1,6 @@
-Install
+Referencia: https://www.youtube.com/watch?v=-46yTm4DoEI
+
+Nuggets para instalar
 
 - AWSSDK.CloudWatchLogs          --> Se usa para usar logs con aws
 - AWS.Logger.AspNetCore          --> Se usa para integrar los logs de aws con los que vienen por defecto en .net
