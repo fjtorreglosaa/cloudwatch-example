@@ -6,3 +6,8 @@ Install
 - Serilog                        --> Libreria que permite serializar los logs
 - Serilog.AspNetCore             --> Da formato o serializa los logs de asp.netcore
 - Serilog.Settings.Configuration --> Dado que necesitamos archivos de configuracion para usar serilog, se requere este paquete
+
+Usando el CloudWatch con serilog se puede filtrar de la siguiente forma:
+
+{$.city= Monteria} filtra los logs que tienen Monteria
+{$.city= Monteria && $.count > 1} filtra los logs que tienen Monteria y son mayores que 1
