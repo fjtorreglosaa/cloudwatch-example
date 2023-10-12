@@ -1,5 +1,8 @@
+using AWS.Logger.SeriLog;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Serilog;
+using Serilog.Formatting.Compact;
 
 namespace UdemyToolkit
 {
@@ -9,13 +12,17 @@ namespace UdemyToolkit
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Host.UseSerilog((context, longingConfiguration) =>
+            {
+                longingConfiguration.ReadFrom.Configuration(context.Configuration)
+                    .WriteTo.AWSSeriLog(configuration: context.Configuration, textFormatter: new RenderedCompactJsonFormatter());
+            });
+
+            //builder.Logging.AddAWSProvider();
+
             var startup = new Startup(builder.Configuration);
 
             startup.ConfigureServices(builder.Services);
-
-            var serviceProvider = builder.Services.BuildServiceProvider();
-
-            var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
 
             var app = builder.Build();
 

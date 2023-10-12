@@ -9,9 +9,20 @@ namespace UdemyToolkit.Controllers
     [ApiController]
     public class CWController : ControllerBase
     {
-        [HttpGet]
-        public async Task<ActionResult> LogTest(string cityName)
+        private readonly ILogger<CWController> _logger;
+
+        public CWController(ILogger<CWController> logger)
         {
+            _logger = logger;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> LogTest(string city)
+        {
+            var count = Random.Shared.Next(5, 15);
+
+            _logger.LogInformation("Ciudad {city} with count of {count}", city, count);
+
             return Ok("All Ok!!");
 
         }
