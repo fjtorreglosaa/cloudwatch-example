@@ -9,5 +9,5 @@ Install
 
 Usando el CloudWatch con serilog se puede filtrar de la siguiente forma:
 
-{$.city= Monteria} filtra los logs que tienen Monteria
-{$.city= Monteria && $.count > 1} filtra los logs que tienen Monteria y son mayores que 1
+- {$.city= Monteria} filtra los logs que tienen Monteria
+- {$.city= Monteria && $.count > 1} filtra los logs que tienen Monteria y son mayores que 1
